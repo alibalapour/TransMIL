@@ -27,8 +27,8 @@ class PandaData(data.Dataset):
         #---->split dataset
         if state == 'train':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'train']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
             
         if state == 'val':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'val']
