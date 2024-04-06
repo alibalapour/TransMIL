@@ -17,7 +17,7 @@ Data:
     dataset_name: PANDA_data
     data_shuffle: False
     data_dir: /kaggle/input/panda-pathce-features-1-4000-resnet/output_features/pt_files/
-    label_dir: /kaggle/working/PANDA_train.csv
+    label_dir: /kaggle/working/PANDA_train_val.csv
     fold: 0
     nfold: 4
 
