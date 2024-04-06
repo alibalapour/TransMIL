@@ -45,6 +45,8 @@ class PandaData(data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
+        print(len(self.data))
+        print(idx)
         slide_id = self.data[idx]
         label = int(self.label[idx])
         full_path = Path(self.feature_dir) / f'{slide_id}.pt'
