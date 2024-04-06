@@ -42,6 +42,7 @@ class PandaData(data.Dataset):
 
 
     def __len__(self):
+        print('********************', len(self.data))
         return len(self.data)
 
     def __getitem__(self, idx):
