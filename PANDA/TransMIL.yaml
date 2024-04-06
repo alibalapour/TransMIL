@@ -3,7 +3,7 @@ General:
     seed: 2021
     fp16: True
     amp_level: O2
-    precision: 16 
+    precision: 16-mixed 
     multi_gpu_mode: dp
     gpus: [0]
     epochs: &epoch 200 
