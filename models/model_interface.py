@@ -37,18 +37,19 @@ class  ModelInterface(pl.LightningModule):
         
         #---->Metrics
         if self.n_classes > 2: 
-            self.AUROC = torchmetrics.AUROC(num_classes = self.n_classes, average = 'macro')
+            self.AUROC = torchmetrics.AUROC(num_classes = self.n_classes, average = 'macro', task="multiclass")
             metrics = torchmetrics.MetricCollection([torchmetrics.Accuracy(num_classes = self.n_classes,
-                                                                           average='micro'),
-                                                     torchmetrics.CohenKappa(num_classes = self.n_classes),
+                                                                           average='micro',
+                                                                           task="multiclass"),
+                                                     torchmetrics.CohenKappa(num_classes = self.n_classes, task="multiclass"),
                                                      torchmetrics.F1(num_classes = self.n_classes,
-                                                                     average = 'macro'),
+                                                                     average = 'macro', task="multiclass"),
                                                      torchmetrics.Recall(average = 'macro',
-                                                                         num_classes = self.n_classes),
+                                                                         num_classes = self.n_classes, task="multiclass"),
                                                      torchmetrics.Precision(average = 'macro',
-                                                                            num_classes = self.n_classes),
+                                                                            num_classes = self.n_classes, task="multiclass"),
                                                      torchmetrics.Specificity(average = 'macro',
-                                                                            num_classes = self.n_classes)])
+                                                                            num_classes = self.n_classes, task="multiclass")])
         else : 
             self.AUROC = torchmetrics.AUROC(num_classes=2, average = 'macro')
             metrics = torchmetrics.MetricCollection([torchmetrics.Accuracy(num_classes = 2,
