@@ -27,18 +27,18 @@ class PandaData(data.Dataset):
         #---->split dataset
         if state == 'train':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'train']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reset_index(drop=True)
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reset_index(drop=True)
             
         if state == 'val':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'val']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reset_index(drop=True)
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reset_index(drop=True)
             
         if state == 'test':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'test']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reset_index(drop=True)
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reset_index(drop=True)
 
 
     def __len__(self):
@@ -46,10 +46,6 @@ class PandaData(data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        print(len(self.data))
-        print(idx)
-        print(self.data)
-        return
         slide_id = self.data[idx]
         label = int(self.label[idx])
         full_path = Path(self.feature_dir) / f'{slide_id}.pt'
