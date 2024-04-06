@@ -58,7 +58,7 @@ def main(cfg):
         callbacks=cfg.callbacks,
         max_epochs= cfg.General.epochs,
         # gpus=cfg.General.gpus,
-        amp_level=cfg.General.amp_level,  
+        # amp_level=cfg.General.amp_level,  
         precision=cfg.General.precision,  
         accumulate_grad_batches=cfg.General.grad_acc,
         deterministic=True,
