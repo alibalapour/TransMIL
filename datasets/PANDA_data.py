@@ -32,17 +32,17 @@ class PandaData(data.Dataset):
             
         if state == 'val':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'val']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
             
         if state == 'test':
             self.slide_data = self.slide_data[self.slide_data['set'] == 'test']
-            self.data = self.slide_data.loc[:, 'image_id'].dropna()
-            self.label = self.slide_data.loc[:, 'isup_grade'].dropna()
+            self.data = self.slide_data.loc[:, 'image_id'].dropna().reindex()
+            self.label = self.slide_data.loc[:, 'isup_grade'].dropna().reindex()
 
 
     def __len__(self):
-        print('********************', len(self.data))
+        # print('********************', len(self.data))
         return len(self.data)
 
     def __getitem__(self, idx):
