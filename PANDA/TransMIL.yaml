@@ -31,7 +31,7 @@ Data:
 
 Model:
     name: TransMIL
-    n_classes: 5
+    n_classes: 6
 
 
 Optimizer:
