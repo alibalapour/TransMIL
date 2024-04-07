@@ -35,7 +35,7 @@ Model:
 
 
 Optimizer:
-    opt: Lookahead
+    opt: lookahead_radam
     lr: 0.00001
     opt_eps: null 
     opt_betas: null
