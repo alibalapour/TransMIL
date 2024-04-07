@@ -36,7 +36,7 @@ Model:
 
 Optimizer:
     opt: adamw
-    lr: 0.00002
+    lr: 0.000002
     opt_eps: null 
     opt_betas: null
     momentum: null 
