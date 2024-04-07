@@ -6,7 +6,7 @@ General:
     precision: 16 
     multi_gpu_mode: dp
     gpus: [0]
-    epochs: &epoch 200 
+    epochs: &epoch 400 
     grad_acc: 2
     frozen_bn: False
     patience: 10
@@ -35,7 +35,7 @@ Model:
 
 
 Optimizer:
-    opt: lookahead_radam
+    opt: adamw
     lr: 0.00002
     opt_eps: null 
     opt_betas: null
