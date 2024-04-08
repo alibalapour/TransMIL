@@ -35,11 +35,11 @@ Model:
 
 
 Optimizer:
-    opt: lookahead_sgd
+    opt: lookahead_adamw
     lr: 0.00001
     opt_eps: null 
     opt_betas: null
-    momentum: 0.9 
+    momentum: null 
     weight_decay: 0.00001
 
 Loss:
