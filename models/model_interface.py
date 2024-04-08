@@ -229,8 +229,6 @@ class  ModelInterface(pl.LightningModule):
         for arg in class_args:
             if arg in inkeys:
                 args1[arg] = getattr(self.hparams.model, arg)
-                
-        args1['PLIP_encdoer'] = self.PLIP_encoder
-        
+                        
         args1.update(other_args)
-        return Model(**args1)
+        return Model(PLIP_encoder=self.PLIP_encoder, **args1)
