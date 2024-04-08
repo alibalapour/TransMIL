@@ -35,8 +35,8 @@ Model:
 
 
 Optimizer:
-    opt: lookahead_radam
-    lr: 0.00004
+    opt: lookahead_sgd
+    lr: 0.00001
     opt_eps: null 
     opt_betas: null
     momentum: null 
