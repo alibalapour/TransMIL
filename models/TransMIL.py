@@ -44,10 +44,10 @@ class PPEG(nn.Module):
 
 
 class TransMIL(nn.Module):
-    def __init__(self, n_classes, PLIP_encoer=False):
+    def __init__(self, n_classes, PLIP_encoder=False):
         super(TransMIL, self).__init__()
         self.pos_layer = PPEG(dim=512)
-        if PLIP_encoer:
+        if PLIP_encoder:
             self._fc1 = nn.Sequential(nn.Linear(512, 512), nn.ReLU())
         else:
             self._fc1 = nn.Sequential(nn.Linear(1024, 512), nn.ReLU())
