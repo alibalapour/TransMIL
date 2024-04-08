@@ -18,6 +18,7 @@ def make_parse():
     parser.add_argument('--config', default='Camelyon/TransMIL.yaml',type=str)
     parser.add_argument('--gpus', default = [2])
     parser.add_argument('--fold', default = 0)
+    parser.add_argument('--PLIP_encoder', default=False, action="store_true")
     args = parser.parse_args()
     return args
 
@@ -47,7 +48,8 @@ def main(cfg):
                             'loss': cfg.Loss,
                             'optimizer': cfg.Optimizer,
                             'data': cfg.Data,
-                            'log': cfg.log_path
+                            'log': cfg.log_path,
+                            'PLIP_encoder': args.PLIP_encoder
                             }
     model = ModelInterface(**ModelInterface_dict)
     

@@ -23,13 +23,14 @@ import pytorch_lightning as pl
 class  ModelInterface(pl.LightningModule):
 
     #---->init
-    def __init__(self, model, loss, optimizer, **kargs):
+    def __init__(self, model, loss, optimizer, PLIP_encoder, **kargs):
         super(ModelInterface, self).__init__()
         self.save_hyperparameters()
         self.load_model()
         self.loss = create_loss(loss)
         self.optimizer = optimizer
         self.n_classes = model.n_classes
+        self.PLIP_encoder = PLIP_encoder
         self.log_path = kargs['log']
 
         #---->acc
