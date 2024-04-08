@@ -16,7 +16,7 @@ General:
 Data:
     dataset_name: PANDA_data
     data_shuffle: False
-    data_dir: /kaggle/input/plip-features-0-4000/output_features/pt_files
+    data_dir: /kaggle/input/panda-plip-features/output_features/pt_files/
     label_dir: /kaggle/working/PANDA_train_val.csv
     fold: 0
     nfold: 4
