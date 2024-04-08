@@ -209,6 +209,7 @@ class  ModelInterface(pl.LightningModule):
         else:
             camel_name = name
         try:
+            print('@@@@@@@@@', camel_name)
             Model = getattr(importlib.import_module(
                 f'models.{name}'), camel_name)
         except:
@@ -228,4 +229,4 @@ class  ModelInterface(pl.LightningModule):
             if arg in inkeys:
                 args1[arg] = getattr(self.hparams.model, arg)
         args1.update(other_args)
-        return Model(PLIP_encoder=self.PLIP_encoder, **args1)
+        return Model(**args1)

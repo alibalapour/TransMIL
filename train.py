@@ -45,7 +45,6 @@ def main(cfg):
 
     #---->Define Model
     
-    print('@@@@@@@@@@@@@@@@', args.PLIP_encoder)
     ModelInterface_dict = {'model': cfg.Model,
                             'loss': cfg.Loss,
                             'optimizer': cfg.Optimizer,
