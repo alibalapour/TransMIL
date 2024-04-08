@@ -228,4 +228,4 @@ class  ModelInterface(pl.LightningModule):
             if arg in inkeys:
                 args1[arg] = getattr(self.hparams.model, arg)
         args1.update(other_args)
-        return Model(**args1)
+        return Model(PLIP_encoder=self.PLIP_encoder, **args1)
