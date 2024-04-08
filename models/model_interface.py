@@ -209,9 +209,8 @@ class  ModelInterface(pl.LightningModule):
         else:
             camel_name = name
         try:
-            print('@@@@@@@@@', camel_name)
-            Model = getattr(importlib.import_module(
-                f'models.{name}'), camel_name)
+            Model = getattr(importlib.import_module( 
+                f'models.{name}'), camel_name)              # camel_name=TransMIL
         except:
             raise ValueError('Invalid Module File Name or Invalid Class Name!')
         self.model = self.instancialize(Model)
@@ -222,11 +221,18 @@ class  ModelInterface(pl.LightningModule):
             from self.hparams dictionary. You can also input any args
             to overwrite the corresponding value in self.hparams.
         """
+        
         class_args = inspect.getargspec(Model.__init__).args[1:]
         inkeys = self.hparams.model.keys()
+
         args1 = {}
         for arg in class_args:
             if arg in inkeys:
                 args1[arg] = getattr(self.hparams.model, arg)
+                
+        print('@@@@@@@@@@@@@', class_args)
+        print('@@@@@@@@@@@@@', inkeys)
+        print('@@@@@@@@@@@@@', args1)
+        
         args1.update(other_args)
         return Model(**args1)
