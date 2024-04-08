@@ -26,11 +26,11 @@ class  ModelInterface(pl.LightningModule):
     def __init__(self, model, loss, optimizer, PLIP_encoder, **kargs):
         super(ModelInterface, self).__init__()
         self.save_hyperparameters()
+        self.PLIP_encoder = PLIP_encoder
         self.load_model()
         self.loss = create_loss(loss)
         self.optimizer = optimizer
         self.n_classes = model.n_classes
-        self.PLIP_encoder = PLIP_encoder
         self.log_path = kargs['log']
 
         #---->acc
@@ -230,7 +230,7 @@ class  ModelInterface(pl.LightningModule):
             if arg in inkeys:
                 args1[arg] = getattr(self.hparams.model, arg)
                 
-        args1['PLIP_encdoer'] = self.PLIP_encoder
+        # args1['PLIP_encdoer'] = self.PLIP_encoder
         
         args1.update(other_args)
         return Model(**args1)
