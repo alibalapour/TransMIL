@@ -21,6 +21,7 @@ def make_parse():
     
     parser.add_argument('--PLIP_encoder', default=False, action="store_true")
     parser.add_argument('--label_dir', type=str, default='')
+    parser.add_argument('--data_dir', type=str, default='')
     parser.add_argument('--log_path', type=str, default='')
     args = parser.parse_args()
     return args
@@ -93,6 +94,7 @@ if __name__ == '__main__':
     cfg.General.server = args.stage
     cfg.Data.fold = args.fold
     cfg.Data.label_dir = args.label_dir
+    cfg.Data.data_dir = args.data_dir
     cfg.General.log_path = args.log_path
 
     #---->main
