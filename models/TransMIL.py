@@ -48,7 +48,8 @@ class TransMIL(nn.Module):
         super(TransMIL, self).__init__()
         self.pos_layer = PPEG(dim=512)
         if PLIP_encoder:
-            self._fc1 = nn.Sequential(nn.Linear(512, 512), nn.ReLU())
+            # self._fc1 = nn.Sequential(nn.Linear(512, 512), nn.ReLU())
+            pass
         else:
             self._fc1 = nn.Sequential(nn.Linear(1024, 512), nn.ReLU())
         self.cls_token = nn.Parameter(torch.randn(1, 1, 512))
@@ -63,7 +64,7 @@ class TransMIL(nn.Module):
 
         h = kwargs['data'].float() #[B, n, 1024]
         
-        h = self._fc1(h) #[B, n, 512]
+        # h = self._fc1(h) #[B, n, 512]
         
         #---->pad
         H = h.shape[1]
