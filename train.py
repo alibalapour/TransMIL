@@ -18,7 +18,10 @@ def make_parse():
     parser.add_argument('--config', default='Camelyon/TransMIL.yaml',type=str)
     parser.add_argument('--gpus', default = [2])
     parser.add_argument('--fold', default = 0)
+    
     parser.add_argument('--PLIP_encoder', default=False, action="store_true")
+    parser.add_argument('--label_dir', type=str, default='')
+    parser.add_argument('--log_path', type=str, default='')
     args = parser.parse_args()
     return args
 
@@ -89,6 +92,8 @@ if __name__ == '__main__':
     cfg.General.gpus = args.gpus
     cfg.General.server = args.stage
     cfg.Data.fold = args.fold
+    cfg.Data.label_dir = args.label_dir
+    cfg.General.log_path = args.log_path
 
     #---->main
     main(cfg)
