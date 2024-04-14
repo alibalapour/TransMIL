@@ -23,6 +23,15 @@ def make_parse():
     parser.add_argument('--label_dir', type=str, default='')
     parser.add_argument('--data_dir', type=str, default='')
     parser.add_argument('--log_path', type=str, default='')
+    parser.add_argument('--checkpoint_path', type=str, default='')
+    
+    parser.add_argument('--opt', type=str, default='lookahead_radam')
+    parser.add_argument('--lr', type=float, default=0.00004)
+    parser.add_argument('--opt_eps', type=float, default=None)
+    parser.add_argument('--opt_betas', type=float, default=None)
+    parser.add_argument('--momentum', type=float, default=None)
+    parser.add_argument('--weight_decay', type=None, default=0.00001)
+    
     args = parser.parse_args()
     return args
 
@@ -75,6 +84,8 @@ def main(cfg):
     #---->train or test
     if cfg.General.server == 'train':
         trainer.fit(model = model, datamodule = dm)
+    elif cfg.General.server == 'test':
+        new_model = model.load_from_checkpoint(checkpoint_path=cfg.path, cfg=cfg)
     else:
         model_paths = list(cfg.log_path.glob('*.ckpt'))
         model_paths = [str(model_path) for model_path in model_paths if 'epoch' in str(model_path)]
@@ -96,6 +107,14 @@ if __name__ == '__main__':
     cfg.Data.label_dir = args.label_dir
     cfg.Data.data_dir = args.data_dir
     cfg.General.log_path = args.log_path
+    cfg.Model.checkpoint_path = args.checkpoint_path
+    
+    cfg.Optimizer.opt = args.opt
+    cfg.Optimizer.lr = args.lr
+    cfg.Optimizer.opt_eps = args.opt_eps
+    cfg.Optimizer.opt_betas = args.opt_betas
+    cfg.Optimizer.momentum = args.momentum
+    cfg.Optimizer.weight_decay = args.weight_decay
 
     #---->main
     main(cfg)
