@@ -84,20 +84,15 @@ def main(cfg):
     #---->train or test
     if cfg.General.server == 'train':
         trainer.fit(model = model, datamodule = dm)
-    # elif cfg.General.server == 'test':
-    #     new_model = model.load_from_checkpoint(checkpoint_path=cfg.path, cfg=cfg)
-    #     print(new_model)
-    #     trainer.test(model=new_model, datamodule=dm)
+
     else:
         model_paths = list(cfg.log_path.glob('*.ckpt'))
         model_paths = [str(model_path) for model_path in model_paths if 'epoch' in str(model_path)]
         for path in model_paths:
-            # new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
-            # print(torch.load(path, map_location='cpu'))
+            
             model.load_state_dict(torch.load(path, map_location='cpu')['state_dict'])
             model.to('cuda')
 
-            # print(new_model.model.state_dict())
             trainer.test(model=model, datamodule=dm)
 
 if __name__ == '__main__':
