@@ -92,6 +92,7 @@ def main(cfg):
         for path in model_paths:
             print(path)
             new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
+            print(new_model)
             trainer.test(model=new_model, datamodule=dm)
 
 if __name__ == '__main__':
