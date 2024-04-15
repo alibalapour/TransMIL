@@ -93,7 +93,7 @@ def main(cfg):
             print(path)
             new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
             print(new_model)
-            trainer.test(model=new_model, datamodule=dm)
+            trainer.test(model = ModelInterface(**ModelInterface_dict), datamodule=dm)
 
 if __name__ == '__main__':
 
