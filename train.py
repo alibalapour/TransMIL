@@ -84,8 +84,8 @@ def main(cfg):
     #---->train or test
     if cfg.General.server == 'train':
         trainer.fit(model = model, datamodule = dm)
-    elif cfg.General.server == 'test':
-        new_model = model.load_from_checkpoint(checkpoint_path=cfg.path, cfg=cfg)
+    # elif cfg.General.server == 'test':
+    #     new_model = model.load_from_checkpoint(checkpoint_path=cfg.path, cfg=cfg)
     else:
         model_paths = list(cfg.log_path.glob('*.ckpt'))
         model_paths = [str(model_path) for model_path in model_paths if 'epoch' in str(model_path)]
