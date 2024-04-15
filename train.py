@@ -92,7 +92,7 @@ def main(cfg):
         model_paths = list(cfg.log_path.glob('*.ckpt'))
         model_paths = [str(model_path) for model_path in model_paths if 'epoch' in str(model_path)]
         for path in model_paths:
-            
+            print(model.model.state_dict())
             new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
             print(new_model)
             print(new_model.model.state_dict())
