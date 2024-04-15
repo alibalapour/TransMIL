@@ -94,7 +94,7 @@ def main(cfg):
         for path in model_paths:
             # new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
             # print(torch.load(path, map_location='cpu'))
-            model.load_state_dict(torch.load(path, map_location='cpu').state_dict())
+            model.load_state_dict(torch.load(path, map_location='cpu')['state_dict'])
             model.to('cuda')
 
             # print(new_model.model.state_dict())
