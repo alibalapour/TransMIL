@@ -95,7 +95,7 @@ def main(cfg):
             
             new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
             print(new_model)
-            print(new_model.model)
+            print(new_model.model.state_dict())
             trainer.test(model=new_model, datamodule=dm)
 
 if __name__ == '__main__':
