@@ -93,6 +93,7 @@ def main(cfg):
         model_paths = [str(model_path) for model_path in model_paths if 'epoch' in str(model_path)]
         for path in model_paths:
             # new_model = model.load_from_checkpoint(checkpoint_path=path, cfg=cfg)
+            print(torch.load(path, map_location='cpu'))
             model.model.load_state_dict(torch.load(path, map_location='cpu'))
             model.model.to('cuda')
 
