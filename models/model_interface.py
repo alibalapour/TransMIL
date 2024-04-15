@@ -204,6 +204,7 @@ class  ModelInterface(pl.LightningModule):
         # Change the `trans_unet.py` file name to `TransUnet` class name.
         # Please always name your model file name as `trans_unet.py` and
         # class name or funciton name corresponding `TransUnet`.
+        print("******* name: ", name)
         if '_' in name:
             camel_name = ''.join([i.capitalize() for i in name.split('_')])
         else:
