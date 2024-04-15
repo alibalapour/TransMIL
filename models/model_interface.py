@@ -214,7 +214,7 @@ class  ModelInterface(pl.LightningModule):
                 f'models.{name}'), camel_name)              # camel_name=TransMIL
         except:
             raise ValueError('Invalid Module File Name or Invalid Class Name!')
-        print("******** Model:", Model)
+        
         self.model = self.instancialize(Model)
         pass
 
